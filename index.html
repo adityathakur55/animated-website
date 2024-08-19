@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         html.lenis, html.lenis body {
+           height: auto;
+        }
+
+        .lenis.lenis-smooth {
+           scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+           overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+           overflow: hidden;
+        }
+
+        .lenis.lenis-smooth iframe {
+           pointer-events: none;
+        }
+
+    </style>
+    
+ 
+    <style>
+        
+        #page3 {
+            min-height: 100vh;
+            width: 100%;
+            background-color: white;
+            padding: 4vw 0;
+        }
+        
+        .elem {
+            height: 100px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 2vw 2vw;
+        }
+        
+        .elem .overlay {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: -100%; 
+            transition: top 0.2s ease; 
+        }
+        
+        .elem:hover h2 {
+            scale: 1.5;
+            text-transform: uppercase;
+            color: orange;
+            font-size: large; 
+        }
+        
+        #fixed-image {
+            height: 30vw;
+            width: 22vw;
+            border-radius: 10px;
+            position: fixed;
+            z-index: 99;
+            left: 50%;
+            top: 25%;
+            display: none;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .elem .overlay {
+            z-index: 8; 
+        }
+    </style>
+        
+    <style>
+        #loader{
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            position: fixed;
+            z-index: 99;
+            top: 0%;
+            transition: all ease 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #loader video{
+            color: transparent;
+            position: absolute;
+            opacity: 1;
+            animation-name: load;
+            animation-duration: 4s;
+            animation-timing-function: linear;
+        }
+
+
+@keyframes load {
+    0%{
+        opacity: 1;
+    }
+    10%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+        </style>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div id="loader">
+        <video autoplay loop muted src="https://doze.studio/load.mp4"></video>
+    </div>
+
+    <div class="w-full bg-zinc-900">
+      
+        <div class="parent w-full relative left-0 top-0 h-[1200vh] ">
+            <div class="w-full h-screen sticky left-0 top-0 overflow-x-hidden ">
+                
+                <canvas class="w-full h-screen" id="frame"></canvas>
+                <div class="absolute w-1/2  flex items-center justify-start gap-2 px-12 top-5 left-0 ">
+                    <h1 class="leading-20 text-zinc-300 font-semibold text-3xl flex items-center gap-2">Doze <span class="line w-6 border-[1px] border-white inline-block mt-1 "></span> Studio </h1>
+                    <video autoplay muted loop class="w-5 h-5" src="https://doze.studio/logoAnim.mp4"></video>
+                </div>
+                <div class="absolute w-1/2 flex items-center justify-center gap-6 top-5 left-[23vw]">
+                    <a href="about.html"><h1 class="text-2xl text-white font-semibold text-zinc-300 underline z-[999]"><i>About</i></h1></a>
+                    <a href="lab.html"><h1 class="text-2xl text-white font-semibold text-zinc-300 underline"><i>Project</i></h1></a>
+                </div>
+                <div class="absolute z-[2] w-1/2  flex items-center justify-end px-12 top-5 right-0">
+            <h3><a href="mailto:adityathakur5103@gmail.com" class="leading-20 text-zinc-300 text-5xl font-[100] font-semibold">  Let's Talk </a></h3>
+              
+        </div>
+                 
+                <div class="absolute animate1 z-[2] text-white bottom-10 left-10 w-1/2">
+                    <h1 class="leading-20 font-[100] text-3xl">
+                        &copy; 2024 DOZE STD
+                    </h1>
+                    <h1 class="text-3xl">
+                        SHAPING BRANDS -> CRAFTING MOTION
+                    </h1>
+                </div>
+                <div class="absolute animate2 flex gap-5 z-[2] text-white bottom-20 right-10 w-1/2 text-right opacity-0">
+                    <h1 class="leading-20 font-[100] uppercase text-7xl">
+                        Transforming Visions
+                    </h1>
+                    <h1 class=" pt-8 text-center w-3/4 ">
+                        Building identity and inspiring action. Sculpting digital experience resonate
+                    </h1>
+                </div>
+                <div class="absolute animate3 z-[2] text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center opacity-0">
+                    <h1 class="leading-20 font-[100] uppercase text-7xl">
+                        Elevating Aesthetics
+                    </h1>
+                    <h1 class="text-xl top-5">
+                        Crafting solutions and exploring new horizons. Evolving narratives and elevating aesthetics in every project.
+                    </h1>
+                </div>
+
+
+                <div class="w-1/3 panel translate-x-full h-screen bg-white absolute right-0 top-0 z-[2] p-10">
+                    <h3 class="panelelem text-xl font-[100]">
+                        &copy; 2024 Doze.Std
+                    </h3>
+                    <p class="panelelem mt-10 text-xl">
+                        Sculpting digital
+                        Transforming visions into digital realities. Weaving stories that captivate and innovate.
+                        Exploring new possibilities with a focus on narrative evolution. Crafting solutions that engage 
+                        an elevate.
+                    </p>
+                    <button class="panelelem border-[1px] px-3 py-2 border-[#555] font-[100] mt-4">
+                        Get Reviews
+                    </button>
+                    <div class="panelelem absolute bottom-10">
+                        <h3 class="text-xl">
+                            Innovating Design 
+                        </h3>
+                        <p class="text-sm mt-3"> 
+                            Connecting ideas to foster creativity. Designing impactful experiences
+                            that
+                            resonate
+                            Feel free to mix and match these sections to suit your website's design  needs!
+                        </p>
+                        <button class="bg-black text-white px-7 text-sm mt-4 py-4 font[100] capitalize">
+                            <a href="about.html">experience</a>
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="absolute z-[2] panelism text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-7xl tracking-tighter opacity-0">
+                    &copy; Panelism
+                    <span class="line w-10 h-1 bg-white inline-block"></span>
+                    2048
+                </div>
+
+
+               
+            </div>
+        </div>
+
+
+        <div id="page3">
+            <div id="elem-container" class="flex flex-col gap-5">
+                <div class="text-7xl font-[100] mb-16 px-8">&reg; Our Recent Works</div> 
+                <div id="elem1" class="elem"
+                    data-image="https://images.unsplash.com/photo-1701001308648-7b731a52b8d7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">Blorf Wibble</h2> 
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1700975928909-da4a46227a47?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8">  
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">Snarf Zibble</h2> 
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1701077137611-9be394bf62f0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">NYFW Popup</h2>
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1701014159309-4a8b84faadfe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">Glark Fizzle</h2>
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1700924546093-f914fd5b8814?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">SOHO NYC</h2>
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1700601437860-e66da79cf6d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1OXx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">Snoot Quazz</h2>
+                </div>
+                <div class="elem"
+                    data-image="https://images.unsplash.com/photo-1700769025506-6c3dcb9ec9b7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw2OXx8fGVufDB8fHx8fA%3D%3D">
+                    <div class="overlay"></div>
+                    <h2 class="text-5xl font-[100] font-medium px-28">Play New Kidvision</h2>
+                </div>
+            </div>
+            
+        </div>
+        <div class=" w-full h-[30vw]">
+            <div class="w-full h-full flex text-white">
+                <div class=" w-1/2 h-full px-10 py-3">
+                    <div class=" w-3/4 h-1/2 flex flex-col items-start justify-center pt-12">
+                        <h1 class="text-xl uppercase pb-3 font-semibold">Project Inquires</h1>
+                        <p class="text-sm">Ready to work with us ?</p>
+                        <p class="w-[30vw] text-sm pb-5">Reach out to discuss how we can help you build a strong digital brand presence.</p>
+                        <h3><a href="mailto:adityathakur5103@gmail.com" class="leading-20  font-[100] font-semibold pt-5 text-sm "> <i>adityathakur5103@gmail.com</i> </a></h3>
+                    </div>
+                    <div class=" w-full h-1/2 flex flex-col items-start justify-center">
+                        <h1 class="pb-3 text-xl uppercase font-semibold">Our Office</h1>
+                        <p class="text-sm">Doze Studio</p>
+                        <p class="text-sm">1b rue Baron</p>
+                        <p class="text-sm">44 000 Nantes</p>
+                        <p class="text-sm">France</p>
+                    </div>
+                    
+                </div>
+
+
+
+                <div class="w-1/2 h-full px-10 py-3">
+                    <div class=" w-full h-1/2 flex items-center justify-end">
+                        <img class="w-24 h-16 pr-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEEv4vAX27H2wDGstKAhtN38Er9PLwKX9ZTMgF5XtXOWkPx4XI" alt="">
+                    </div>
+                    <div class=" w-full h-1/2 flex flex-col justify-centers items-end pt-8">
+                        <h1 class="text-xl pb-3 uppercase font-semibold">Networks</h1>
+                        <p class="text-sm">+33 2 85 52 19 62</p>
+                        <p class="text-sm"> ▬ </p>
+                        <p class="text-sm">Instagram</p>
+                        <p class="text-sm">Linkedin </p>
+                        <p class="text-sm">Giphy</p>
+                            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <div id="fixed-image"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
+
+    <script>
+    function loaderAnimation(){
+        var loader= document.querySelector("#loader")
+    setTimeout(function(){
+         loader.style.top= "-120%"
+    },4000)
+    }
+    loaderAnimation();
+    </script> 
+
+    <script>
+        function page3_Animation() {
+            const elemC = document.querySelector("#elem-container");
+            const fixed = document.querySelector("#fixed-image");
+    
+            elemC.addEventListener("mouseenter", function () {
+                fixed.style.display = "block";
+            });
+    
+            elemC.addEventListener("mouseleave", function () {
+                fixed.style.display = "none";
+            });
+    
+            document.querySelectorAll(".elem").forEach(function(elem) {
+                elem.addEventListener("mouseenter", function() {
+                    const image = elem.getAttribute("data-image");
+                    if (image) {
+                        fixed.style.backgroundImage = `url(${image})`;
+                        fixed.style.backgroundSize = 'cover'; 
+                        fixed.style.backgroundPosition = 'center'; 
+                        console.log('Image URL set:', image); 
+                    } else {
+                        console.error('No image URL found for element');
+                    }
+                });
+            });
+        }
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            page3_Animation();
+        });
+    </script>
+    
+
+    <script>
+
+        const canvas= document.querySelector("canvas");
+        const context = canvas.getContext("2d");
+
+        const frames={
+            currentIndex: 0,
+            maxIndex: 1344
+        };
+
+        let imagesLoaded= 0;
+        const images =[];
+
+
+        function preloadImages() {
+            for(var i= 1; i<=frames.maxIndex; i++){
+
+                const imageUrl= `./frames/frame_${i.toString().padStart(4, "0")}.jpg`
+                const img= new Image();
+                img.src= imageUrl;
+                img.onload = () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === frames.maxIndex){
+                        loadImage(frames.currentIndex);
+                        startAnimation();
+                    }
+                }
+                images.push(img);
+
+            }
+
+        }
+
+        function loadImage(index){
+            if(index >= 0 && index <= frames.maxIndex){
+                const img= images[index];
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const scaleX= canvas.width / img.width;
+                const scaleY= canvas.height /img.height;
+                const scale= Math.max(scaleX, scaleY);
+
+                const newWidth= img.width * scale;
+                const newHeight= img.height * scale;
+
+                const offsetX= (canvas.width - newWidth)/ 2;
+                const offsetY= (canvas.height - newHeight)/ 2;
+
+                context.clearRect(0,0, canvas.width, canvas.height);
+                context.imageSmoothingEnabled= true;
+                context.imageSmoothingQuality="high";
+                context.drawImage(img, offsetX, offsetY, newWidth, newHeight);
+
+                frames.currentIndex= index;
+            }
+        }
+
+        function startAnimation(){
+            var tl= gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".parent",
+                    start: "top top",
+                    scrub: 2,
+                    end: "bottom bottom",
+                    
+                }
+            })
+
+            function updateFrame(index){
+               return {
+                currentIndex: index,
+                ease: "linear",
+                onUpdate: function () {
+                    loadImage(Math.floor(frames.currentIndex))
+                }
+            }
+        }
+
+            tl
+                .to(frames, updateFrame(120), "first")
+                .to(".animate1", {opacity: 0, ease: "linear"}, "first")
+
+                .to(frames, updateFrame(200), "second")
+                .to(".animate2", {opacity: 1, ease: "linear"}, "second")
+
+                .to(frames, updateFrame(280), "third")
+                .to(".animate2", {opacity: 1, ease: "linear"}, "third")
+
+                .to(frames, updateFrame(340), "fourth")
+                .to(".animate2", {opacity: 0, ease: "linear"}, "fourth")
+
+                .to(frames, updateFrame(420), "fifth")
+                .to(".animate3", {opacity: 1, ease: "linear"}, "fifth")
+
+                .to(frames, updateFrame(510), "sixth")
+                .to(".animate3", {opacity: 1, ease: "linear"}, "sixth")
+
+                .to(frames, updateFrame(575), "seventh")
+                .to(".animate3", {opacity: 0, ease: "linear"}, "seventh")
+
+                .to(frames, updateFrame(650), "eighth")
+                .to(".panel", {x: "0%", ease: "expo"}, "eighth")
+
+                .to(frames, updateFrame(720), "ninth")
+                .to(".panel", {x: "0%", ease: "expo"}, "ninth")
+
+                .to(frames, updateFrame(800), "tenth")
+                .to(".panel", {opacity: 0, ease: "linear"}, "tenth")
+
+                .to(frames, updateFrame(880), "eleventh")
+                .to("canvas", {scale: .5, ease: "linear"}, "eleventh")
+
+                .to(frames, updateFrame(950), "twelvth")
+                .to(".panelism", {opacity: 1, ease: "expo"}, "twelvth")
+
+                .to(frames, updateFrame(1010), "twelvth")
+                .to(".panelism span", {width: 200, ease: "expo"}, "twelvth")
+
+                .to(frames, updateFrame(1100), "thirteen")
+                .to("canvas", {scale: 1, ease: "linear"}, "thirteen")
+
+                .to(frames, updateFrame(1210), "fourteen")
+                .to(".panelism", {scale: 1.5, ease: "circ"}, "fourteen")
+
+                .to(frames, updateFrame(1344), "fifteen")
+                .to(".panelism", {scale: 1.5, ease: "circ"}, "fifteen")
+
+
+
+        }
+
+        const lenis = new Lenis()
+
+        function raf(time) {
+             lenis.raf(time)
+             requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+     
+
+        preloadImages();
+
+        window.addEventListener("resize", function() {
+            loadImage(Math.floor(frames.currentIndex));
+        })
+
+        document.querySelectorAll(".headings h3")
+           .forEach(function(elem){
+               gsap.from(elem, {
+                  scrollTrigger: {
+                    trigger: elem,
+                    start: "top 90%",
+                    end: "bottom 20%",
+                    scrub: 2
+                },
+                opacity: .3
+            })
+        })
+
+        
+         
+
+    </script>
+
+    
+</body>
+</html>
